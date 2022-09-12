@@ -11,11 +11,10 @@ class Solution:
         output = ListNode()
         len_ = len(lists)
         q = []
-        curr_lists = lists.copy()
         for i in range(len_):
-            while curr_lists[i] is not None:
-                heappush(q, curr_lists[i].val)
-                curr_lists[i] = curr_lists[i].next
+            while lists[i] is not None:
+                heappush(q, lists[i].val)
+                lists[i] = lists[i].next
         
         curr_out = output
         while len(q) > 0:
