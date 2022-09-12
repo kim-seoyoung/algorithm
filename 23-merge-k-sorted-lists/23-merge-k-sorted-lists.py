@@ -8,7 +8,6 @@ from heapq import heappush, heappop
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        output = ListNode()
         len_ = len(lists)
         q = []
         for i in range(len_):
@@ -16,12 +15,16 @@ class Solution:
                 heappush(q, lists[i].val)
                 lists[i] = lists[i].next
         
-        curr_out = output
-        while len(q) > 0:
-            value = heappop(q)
-            curr_out.next = ListNode(val=value)
-            curr_out = curr_out.next
-                
-        output = output.next
-            
-        return output
+        if len(q) == 0:
+            return None
+        else:
+            output = ListNode()
+            curr_out = output
+            while len(q) > 0:
+                value = heappop(q)
+                curr_out.next = ListNode(val=value)
+                curr_out = curr_out.next
+
+            output = output.next
+
+            return output
